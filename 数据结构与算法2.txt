@@ -1,0 +1,112 @@
+线性表
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+https://leetcode.com/problems/search-insert-position/
+https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+
+
+ArrayList的大小是如何自动增加的？
+什么情况下你会使用ArrayList？
+在索引中ArrayList的增加或者删除某个对象的运行过程？效率很低吗？解释一下为什么？
+
+ArrayList如何顺序删除节点 
+ArrayList的遍历方式：
+1. 迭代器  2. for循环（易带来问题，） 3. foreach
+
+双向链表插入顺序：s为要插入的节点
+1: s.next = p.next; 2 p.next.prev = s;
+3 s.prev = p;         4 p.next = s;
+
+双向链表删除：P为要删除节点
+p->pre p  p->next  
+p.next.prev = p.prev;
+p.pre.next = p.next;
+
+双向链表插入的时候回判断是距离首节点近还是尾节点近，从距离近的节点遍历
+
+链表
+https://leetcode.com/problems/merge-two-sorted-lists/
+https://leetcode.com/problems/swap-nodes-in-pairs/
+https://leetcode.com/problems/copy-list-with-random-pointer/
+
+
+手写一个单链表，并且实现单链表元素的逆置，（a0, a1,a2,a3,..an）-> (an,an-1,… a1, a0),算法的空间复杂度和时间复杂度经可能低。
+手写双向链表， 实现增删改查，同时对比自己的LinkList 和源码Linkedlist的异同点
+对比源码Arraylist 和LinkedList 的优缺点
+关注vector
+
+
+
+内存缓存淘汰机制
+1. FIFO
+2. LFU (Least Frequently Used)
+3. LRU     (Least Recently Used)
+
+LRU算法使用最频繁，特点：
+1. 新数据插入到链表头部
+2. 当缓存命中(即缓存数据被访问)，数据要移到表头。 注意： 这个效率不够高， 要遍历
+3. 当链表满的时候，将链表尾部的数据丢弃
+LRU算法可以使用单链表实现， 队列长队有限制。
+
+队列
+队列只能从队列头部减少元素， 从队列尾部添加元素
+队列存在假溢出问题， 可以使用循环队列解决。 循环队列可以使用线性表实现。
+ 循环队列为空的条件 front==rear  满的条件： (rear+1)%N==front，  队列元素个数： (rear-front+N)%N
+ 
+ MessageQueue 按照时间排序的队列,android特有？
+ LinkedList
+ ArrayDeque 双向队列
+ LinkeBlockingDeque
+ PriorityQueue
+
+
+https://leetcode.com/problems/number-of-recent-calls/
+
+https://leetcode.com/problems/design-circular-deque/
+https://leetcode.com/problems/task-scheduler/
+
+栈
+栈也有两种存储  
+顺序结构： 使用一个int类型变量指示栈顶即可
+ 链表结构： 入栈： s.next=stack.top; stack.top = s; stack.count++ 
+            出栈： p = stack.top; stack.top = p.next; p.next=null; count-- 
+			
+java的Stack使用的Vector设计  有什么不足的地方
+计算机采用后缀表达式（逆波兰表达式）来进行计算。平常我们看到的属于中缀表达式。
+1:https://leetcode.com/problems/valid-parentheses/
+2:https://leetcode.com/problems/evaluate-reverse-polish-notation/
+3:https://leetcode.com/problems/implement-stack-using-queues/
+4:https://leetcode.com/problems/decode-string/
+
+
+
+二叉树
+1. 哈夫曼树  代码手写  过程整理
+  树的带权路径长度达到最小，称为最优二叉树，也称为哈夫曼树(Huffman Tree)
+  构造方式：
+  每次把权值最小的两棵二叉树合并
+  左节点权值比右节点小
+  2. 二叉排序树（BST，Binary Sort Tree），也称二叉查找树（Binary Search Tree），二叉搜索树，定义如下：
+   左子树的所有的值小于根节点的值
+   右子树的所有的值大于根节点的值
+   左、右子树满足以上两点
+   3. 平衡二叉树（AVL树，Balance Binary Search Tree ）
+   它是一 棵二叉排序树，它的左右两个子树的高度差（平衡因子）的绝对值不超过1，
+   并且左右两个子树都是一棵平衡二叉树。
+   目的：使得树的高度最低，因为树查找的效率决定于树的高度。  搞清楚旋转原理
+   LL旋转：插入节点在失衡结点的左子树的左边，只需要经过一次左旋即可达到平衡
+   RR旋转：插入节点在失衡结点的右子树的右边 只需要经过一次右旋即可达到平衡
+   LR旋转：插入节点在失衡结点的左子树的右边 失衡结点的左子树先做RR旋转 失衡结点再做LL旋转也可达到平衡
+   RL旋转：插入节点在失衡结点的右子树的左边 失衡结点的右子树先做LL旋转 失衡结点再做RR旋转也可达到平衡
+   
+   
+   
+   
+   3. B树/B+树：myisam存储引擎使用了索引文件，索引节点的数据保存的是真实数据的逻辑地址，主键索引和普通索引结构是一样的。 
+   而innodb没有使用索引文件， 主键索引节点保存了真实的值， 非主键索引的节点保存主键索引的key， 访问非主键索引需要先索引到主键索引， 再找到对应的数据， 因此效率会低一些。
+   MyISAM表索引在处理文本索引时更具优势，而INNODB表索引在其它类型上更具效率优势，同时MySQL高并发需要事务场景时，只能使用INNODB表
+   
+   mysql使用B+树相比二叉平衡树的优势：1. 数据层数更少， 访问磁盘次数更少  2. 利用磁盘读取的局部性原理，预读数据 进一步减少磁盘访问次数。
+   
+   B+树相对B树的优点：
+     ①B+树的所有Data域在叶子节点，一般来说都会进行一个优化，就是将所有的叶子节点用指针串联起来，遍历叶子节点就能获取全部数据，这样就能进行区间访问了。
+     ②IO一次读数据是从磁盘上读的，磁盘容量是固定的，取数据量大小是固定的，非叶子节点不存储数据，节点小，磁盘IO次数就少。
